@@ -1,0 +1,55 @@
+@plugin "daisyui";
+
+@plugin "daisyui/theme" {
+  name: "naruto";
+  default: true;
+  prefersdark: false;
+  color-scheme: light;
+
+  /* color */
+  --color-base-100: oklch(97% 0.02 85);
+  --color-base-200: oklch(94% 0.02 85);
+  --color-base-300: oklch(90% 0.03 85);
+  --color-base-content: oklch(22% 0.02 85);
+
+  --color-primary: oklch(72% 0.22 55);
+  --color-primary-content: oklch(98% 0.01 55);
+
+  --color-secondary: oklch(28% 0.02 260);
+  --color-secondary-content: oklch(98% 0.01 250);
+
+  --color-accent: oklch(52% 0.18 250); 
+  --color-accent-content: oklch(98% 0.01 25);
+
+  /* utility */
+  --color-neutral: oklch(28% 0.02 260);
+  --color-neutral-content: oklch(95% 0.01 260);
+
+  --color-info: oklch(68% 0.16 235);
+  --color-info-content: oklch(98% 0.01 235);
+
+  --color-success: oklch(66% 0.16 145);
+  --color-success-content: oklch(98% 0.01 145);
+
+  --color-warning: oklch(84% 0.18 85);
+  --color-warning-content: oklch(22% 0.02 85);
+
+  --color-error: oklch(60% 0.25 20);
+  --color-error-content: oklch(98% 0.01 20);
+
+  /* border radius */
+  --radius-selector: 0;
+  --radius-field: 0;
+  --radius-box: 0;
+
+  /* border size */
+  --border: 1px;
+
+  /* base sizes */
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+
+  /* depth/ */
+  --depth: 0;
+  --noise: 0;
+}
