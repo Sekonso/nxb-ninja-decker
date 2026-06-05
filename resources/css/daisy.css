@@ -7,9 +7,9 @@
   color-scheme: light;
 
   /* color */
-  --color-base-100: oklch(97% 0.02 85);
-  --color-base-200: oklch(94% 0.02 85);
-  --color-base-300: oklch(90% 0.03 85);
+  --color-base-100: oklch(1 0.0016 0);
+  --color-base-200: oklch(1 0.0016 0);
+  --color-base-300: oklch(1 0.0016 0);
   --color-base-content: oklch(22% 0.02 85);
 
   --color-primary: oklch(72% 0.22 55);
@@ -18,7 +18,7 @@
   --color-secondary: oklch(28% 0.02 260);
   --color-secondary-content: oklch(98% 0.01 250);
 
-  --color-accent: oklch(52% 0.18 250); 
+  --color-accent: oklch(52% 0.18 250);
   --color-accent-content: oklch(98% 0.01 25);
 
   /* utility */

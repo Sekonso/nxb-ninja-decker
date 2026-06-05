@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Collection extends Model
 {
+    public function user(): BelongsTo {
+        return $this->belongsTo(Card::class);
+    }
+
     public function card(): BelongsTo {
         return $this->belongsTo(Card::class);
     }

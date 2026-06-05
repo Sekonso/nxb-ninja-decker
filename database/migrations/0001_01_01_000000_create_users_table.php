@@ -18,6 +18,8 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->unsignedInteger('coins')->default(100);
+            $table->string('avatar_filename')->default('default.jpg');
             $table->timestamps();
         });
 

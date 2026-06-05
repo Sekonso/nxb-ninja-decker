@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('card_id')->constrained('cards');
+            $table->unique(['user_id', 'card_id'], 'collections_user_card_unique');
             $table->timestamps();
         });
     }

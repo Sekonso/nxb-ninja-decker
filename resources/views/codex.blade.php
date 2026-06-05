@@ -1,31 +1,11 @@
 <x-layout>
-    {{-- PROFILE --}}
-    <div>
-        {{-- <h2 class="text-4xl mb-4">Profile</h2> --}}
-        <div class="w-full p-6 flex flex-row gap-6 items-center justify-between bg-secondary text-secondary-content">
-            <div class="flex flex-row gap-6 items-center">
-                <img src="{{ asset('storage/images/avatars/' . $user->avatar_filename) }}" alt="profile picture"
-                    class="h-16 w-16 object-cover object-center">
-                <span class="text-head text-4xl">{{ $user->name }}</span>
-            </div>
-
-            <div class="flex flex-row gap-2 items-center">
-                <a href="/profile/edit" class="btn btn-accent text-head">Edit profile</a>
-                <form action="/logout" method="post">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-error">Logout</button>
-                </form>
-            </div>
-        </div>
+    <div class="bg-accent text-accent-content p-4 mb-8">
+        <h1 class="text-4xl">Shinobi Codex</h1>
     </div>
 
-    {{-- Divider --}}
-    <div class="my-12"></div>
-
-    {{-- MY CARDS --}}
+    {{-- CODEX --}}
     <div>
-        <h2 class="text-4xl mb-4">My Cards</h2>
+
         @foreach ($rarities as $rarity)
             {{-- Rarity head --}}
             <div class="flex flex-row gap-4 items-center">
@@ -35,17 +15,17 @@
 
             {{-- Card list --}}
             <div class="flex flex-row gap-6 my-12">
-                @if ($my_cards_by_rarity->has($rarity->id))
+                @if ($all_cards_by_rarity->has($rarity->id))
 
                     <div class="flex flex-row gap-6">
-                        @foreach ($my_cards_by_rarity[$rarity->id] as $card)
+                        @foreach ($all_cards_by_rarity[$rarity->id] as $card)
                             <div class="hover-3d">
                                 <!-- content -->
-                                <figure class="w-40 rounded-lg">
+                                <figure class="w-40 @unless ($card->owned) grayscale brightness-10 @endunless rounded-lg">
                                     <img src="{{ asset('storage/images/cards/' . $card->filename) }}"
                                         alt="Card: {{ $card->name }}" />
-
                                 </figure>
+
                                 <!-- 8 empty divs needed for the 3D effect -->
                                 <div></div>
                                 <div></div>
@@ -55,13 +35,19 @@
                                 <div></div>
                                 <div></div>
                                 <div></div>
+
+                                @unless ($card->owned)
+                                    <div class="absolute inset-0 flex items-center justify-center text-head text-5xl text-white">
+                                        ?
+                                    </div>
+                                @endunless
                             </div>
                         @endforeach
                     </div>
 
                 @else
                     <div class="w-full flex flex-row items-center justify-center">
-                        <p class="text-head">You have no cards yet</p>
+                        <p class="text-head">Card for this rarity haven't been built</p>
 
                         <img src="{{ asset('storage/images/empty_deck.webp') }}" alt="naruto_kyunnn"
                             class="h-18 w-18 object-cover object-center">
@@ -69,5 +55,6 @@
                 @endif
             </div>
         @endforeach
+
     </div>
 </x-layout>

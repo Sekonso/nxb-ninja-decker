@@ -43,7 +43,9 @@ class DatabaseSeeder extends Seeder
         $createdRarities = [];
 
         foreach ($rarities as $rarity) {
-            $newRarity = Rarity::create(['name' => $rarity]);
+            $newRarity = Rarity::create([
+                'name' => $rarity, 
+                'filename' => "rarity_$rarity.svg"]);
             array_push($createdRarities, $newRarity);
         }
 
