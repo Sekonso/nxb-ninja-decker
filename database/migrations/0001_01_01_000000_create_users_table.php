@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->unsignedInteger('coins')->default(100);
+            $table->dateTime('latest_daily')->nullable();
             $table->string('avatar_filename')->default('default.jpg');
             $table->timestamps();
         });

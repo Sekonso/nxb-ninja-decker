@@ -7,11 +7,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Collection extends Model
 {
-    public function user(): BelongsTo {
+    protected $guarded = [];
+
+    public function user(): BelongsTo
+    {
         return $this->belongsTo(Card::class);
     }
 
-    public function card(): BelongsTo {
+    public function card(): BelongsTo
+    {
         return $this->belongsTo(Card::class);
     }
 }

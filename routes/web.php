@@ -1,10 +1,19 @@
 <?php
 
+use App\Http\Controllers\GachaController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
+
+Route::middleware('guest')->group(function () {
+    // AUTH
+    Route::get('/register', [RegisterController::class, 'index']);
+    Route::post('/register', [RegisterController::class, 'store']);
+    Route::get('/login', [SessionController::class, 'index'])->name('login');
+    Route::post('/login', [SessionController::class, 'store']);
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [PageController::class, 'home']);
@@ -14,14 +23,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/edit', [ProfileController::class, 'edit']);
     Route::patch('/profile', [ProfileController::class, 'update']);
 
+    // Gacha
+    Route::get('/gacha', [GachaController::class, 'index']);
+    Route::post('/gacha/daily', [GachaController::class, 'gacha_daily']);
+    Route::post('/gacha/paid', [GachaController::class, 'gacha_paid']);
+    Route::get('/gacha/result', [GachaController::class, 'result']);
+
     // AUTH
     Route::delete('/logout', [SessionController::class, 'destroy']);
-});
-
-Route::middleware('guest')->group(function () {
-    // AUTH
-    Route::get('/register', [RegisterController::class, 'index']);
-    Route::post('/register', [RegisterController::class, 'store']);
-    Route::get('/login', [SessionController::class, 'index'])->name('login');
-    Route::post('/login', [SessionController::class, 'store']);
 });
