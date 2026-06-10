@@ -12,11 +12,14 @@
                 <li><a href="/codex">Codex</a></li>
                 <li><a href="/gacha">Gacha</a></li>
                 <li><a href="/guide">Guide</a></li>
+                <li><a href="/about">About</a></li>
             </ul>
         </div>
     </div>
 
     <div class="navbar-end">
-        <a href="/" class="btn btn-ghost text-xl text-head">NXB NINJA DECKER</a>
+        <a href="/" class="btn w-50 bg-primary border-none">
+            <img src="{{ asset('/storage/images/logo.png') }}" alt="logo">
+        </a>
     </div>
 </nav>

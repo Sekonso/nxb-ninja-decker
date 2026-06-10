@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout title="Gacha">
     <div class="bg-accent text-accent-content p-4 mb-8">
         <h1 class="text-4xl">Card Gacha</h1>
     </div>
@@ -6,7 +6,7 @@
     <div class="flex flex-col gap-6">
         {{-- coin --}}
         <div class="flex flex-row gap-2">
-            <img src="{{ asset('storage/images/coins.png') }}" alt="coins" class="size-6">
+            <img src="{{ asset('storage/images/coins.svg') }}" alt="coins" class="size-6">
             <span>{{ $user->coins }}</span>
         </div>
 
@@ -18,9 +18,9 @@
         {{-- CTA's --}}
         <div class="flex flex-col gap-4 text-head">
             @if ($user->latest_daily == null || $user->latest_daily < today()->toDateTimeString())
-                <form action="/gacha/daily" method="post">
+                <form action="/gacha/daily" method="post" onsubmit="beforeSubmit(event, 'submit-gacha-daily')">
                     @csrf
-                    <button type="submit" class="btn btn-accent text-xl w-full">Free daily 1x</button>
+                    <button type="submit" id="submit-gacha-daily" class="btn btn-accent text-xl w-full">Free daily 1x</button>
                 </form>
             @else
                 <div class="btn btn-accent btn-disabled flex items-center gap-2">
@@ -39,16 +39,16 @@
             @endif
 
             @if ($user->coins >= 100)
-                <form action="/gacha/paid" method="post">
+                <form action="/gacha/paid" method="post" onsubmit="beforeSubmit(event, 'submit-gacha-paid')">
                     @csrf
-                    <button type="submit" class="btn btn-accent text-xl w-full">
-                        100 <img src="{{ asset('storage/images/coins.png') }}" alt="coins" class="size-6">
+                    <button type="submit" id="submit-gacha-paid" class="btn btn-accent text-xl w-full">
+                        100 <img src="{{ asset('storage/images/coins.svg') }}" alt="coins" class="size-6">
                     </button>
                 </form>
             @else
                 <div class="btn btn-accent btn-disabled text-xl grayscale">
                     Not enough coins
-                    ( 100 <img src="{{ asset('storage/images/coins.png') }}" alt="coins" class="size-6">)
+                    ( 100 <img src="{{ asset('storage/images/coins.svg') }}" alt="coins" class="size-6">)
                 </div>
             @endif
 

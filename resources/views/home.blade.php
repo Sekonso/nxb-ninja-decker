@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout title="My Page">
     {{-- PROFILE --}}
     <div>
         {{-- <h2 class="text-4xl mb-4">Profile</h2> --}}
@@ -9,12 +9,12 @@
                 <span class="text-head text-4xl">{{ $user->name }}</span>
             </div>
 
-            <div class="flex flex-row gap-2 items-center">
-                <a href="/profile/edit" class="btn btn-accent text-head">Edit profile</a>
-                <form action="/logout" method="post">
+            <div class="flex flex-row flex-wrap gap-2 items-center justify-end w-30">
+                <a href="/profile/edit" class="btn btn-accent text-head w-full">Edit profile</a>
+                <form action="/logout" method="post" class="w-full">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-error">Logout</button>
+                    <button type="submit" class="btn btn-error w-full">Logout</button>
                 </form>
             </div>
         </div>
@@ -37,16 +37,16 @@
             <div class="flex flex-row gap-6 my-12">
                 @if ($my_cards_by_rarity->has($rarity->id))
 
-                    <div class="flex flex-row gap-6">
+                    <div class="grid grid-cols-3 gap-6">
                         @foreach ($my_cards_by_rarity[$rarity->id] as $card)
-                            <div class="hover-3d">
-                                <!-- content -->
-                                <figure class="w-40 rounded-lg">
+                            <div class="hover-3d cursor-pointer"
+                                onclick="document.getElementById('card_modal-{{ $card->id }}').showModal()">
+
+                                <figure class="rounded-lg @if ($rarity->name == 'SR') premium-card @endif">
                                     <img src="{{ asset('storage/images/cards/' . $card->filename) }}"
                                         alt="Card: {{ $card->name }}" />
-
                                 </figure>
-                                <!-- 8 empty divs needed for the 3D effect -->
+
                                 <div></div>
                                 <div></div>
                                 <div></div>
@@ -56,6 +56,17 @@
                                 <div></div>
                                 <div></div>
                             </div>
+
+                            <dialog id="card_modal-{{ $card->id }}" class="modal">
+                                <div class="modal-box w-90 p-2 bg-transparent shadow-none">
+                                    <img src="{{ asset('storage/images/cards/' . $card->filename) }}" alt="Card: {{ $card->name }}"
+                                        class="w-full rounded-xl" />
+                                </div>
+
+                                <form method="dialog" class="modal-backdrop">
+                                    <button>close</button>
+                                </form>
+                            </dialog>
                         @endforeach
                     </div>
 

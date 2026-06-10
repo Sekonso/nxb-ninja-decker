@@ -23,6 +23,56 @@ label {
     font-size: 16px;
 }
 
-a:hover, button:hover {
+a:hover,
+button:hover {
     cursor: pointer;
+}
+
+/* animation */
+
+.premium-card {
+    animation: rgb-glow 3s linear infinite;
+}
+
+@keyframes rgb-glow {
+    0% {
+        box-shadow:
+            0 0 3px rgb(208, 0, 255),
+            0 0 6px rgba(254, 9, 254, 0.902);
+    }
+
+    33% {
+        box-shadow:
+            0 0 3px rgba(255, 0, 0, 1),
+            0 0 6px rgba(255, 0, 0, 0.9);
+    }
+
+    66% {
+        box-shadow:
+            0 0 3px rgba(0, 128, 255, 1),
+            0 0 6px rgba(0, 128, 255, 0.9);
+    }
+
+    100% {
+        box-shadow:
+            0 0 3px rgb(208, 0, 255),
+            0 0 6px rgba(254, 9, 254, 0.902);
+    }
+}
+
+.entrance-slide-up {
+    opacity: 0;
+    animation: slideUp 500ms ease forwards;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(48px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

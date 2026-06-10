@@ -1,9 +1,9 @@
 <x-layout title="profile edit">
-    <form action="/profile" method="POST" enctype="multipart/form-data">
+    <form action="/profile" method="POST" enctype="multipart/form-data" onsubmit="beforeSubmit(event, 'submit-profile-edit')">
         @csrf
         @method('PATCH')
 
-        <fieldset class="w-full p-6 flex flex-col items-center gap-6 bg-secondary text-secondary-content">
+        <fieldset class="p-6 flex flex-col items-center gap-6 bg-secondary text-secondary-content">
             {{-- Image input --}}
             <div class="flex flex-col items-center gap-4">
                 <img src="{{ asset('storage/images/avatars/' . $user->avatar_filename) }}" alt="profile picture"
@@ -16,7 +16,7 @@
             </div>
 
             {{-- Other input --}}
-            <div class="flex flex-col gap-4 w-100">
+            <div class="flex flex-col gap-4 w-full">
                 <div class="flex flex-col">
                     <label class="label">Username*</label>
                     <input type="text" name="name" value="{{ $user->name }}" placeholder="Username"
@@ -46,11 +46,12 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-accent">Confirm change</button>
+            <button type="submit" id="submit-profile-edit" class="btn btn-accent">Confirm change</button>
         </fieldset>
     </form>
 </x-layout>
 
+{{-- avatar preview --}}
 <script>
     let previewUrl = null;
 

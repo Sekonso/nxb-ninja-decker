@@ -27,7 +27,7 @@ class GachaController extends Controller
         $stored_cards = session('stored_cards');
 
         if (!$stored_cards) {
-            abort(400, 'Card results are not provided');
+            return redirect('/gacha')->with('error', 'Card results are not provided');
         }
 
         $all_cards = Card::all()->keyBy('id');
@@ -101,9 +101,9 @@ class GachaController extends Controller
         $rarities = Rarity::with('cards')->get()->keyBy('name');
 
         $rarity_drop_rates = [
-            'C' => 60,
-            'R' => 30,
-            // 'SR' => 10,
+            'C' => 65,
+            'R' => 25,
+            'SR' => 10,
         ];
         $rarity_total_rate = array_sum($rarity_drop_rates);
 

@@ -18,6 +18,8 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/', [PageController::class, 'home']);
     Route::get('/codex', [PageController::class, 'codex']);
+    Route::get('/guide', [PageController::class, 'guide']);
+    Route::get('/about', [PageController::class, 'about']);
 
     // Profile
     Route::get('/profile/edit', [ProfileController::class, 'edit']);

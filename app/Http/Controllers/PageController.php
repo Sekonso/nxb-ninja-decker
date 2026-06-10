@@ -43,4 +43,12 @@ class PageController extends Controller
             'all_cards_by_rarity' => $all_cards_by_rarity,
         ]);
     }
+
+    public function guide() {
+        return view('guide');
+    }
+
+    public function about() {
+        return view('about');
+    }
 }

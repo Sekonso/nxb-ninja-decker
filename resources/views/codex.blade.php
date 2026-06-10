@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout title="Codex">
     <div class="bg-accent text-accent-content p-4 mb-8">
         <h1 class="text-4xl">Shinobi Codex</h1>
     </div>
@@ -17,11 +17,18 @@
             <div class="flex flex-row gap-6 my-12">
                 @if ($all_cards_by_rarity->has($rarity->id))
 
-                    <div class="flex flex-row gap-6">
+                    <div class="grid grid-cols-3  gap-6">
                         @foreach ($all_cards_by_rarity[$rarity->id] as $card)
-                            <div class="hover-3d">
+                            <div class="hover-3d" onclick="document.getElementById('card_modal-{{ $card->id }}').showModal()">
+
                                 <!-- content -->
-                                <figure class="w-40 @unless ($card->owned) grayscale brightness-10 @endunless rounded-lg">
+                                <figure class="
+                                        @if (!$card->owned) 
+                                            grayscale brightness-10
+                                        @elseif ($rarity->name == 'SR') 
+                                            premium-card 
+                                        @endif 
+                                        rounded-lg">
                                     <img src="{{ asset('storage/images/cards/' . $card->filename) }}"
                                         alt="Card: {{ $card->name }}" />
                                 </figure>
@@ -36,11 +43,23 @@
                                 <div></div>
                                 <div></div>
 
-                                @unless ($card->owned)
+                                @if (!$card->owned)
                                     <div class="absolute inset-0 flex items-center justify-center text-head text-5xl text-white">
                                         ?
                                     </div>
-                                @endunless
+                                @else
+                                    <dialog id="card_modal-{{ $card->id }}" class="modal">
+                                        <div class="modal-box w-90 p-2 bg-transparent shadow-none">
+                                            <img src="{{ asset('storage/images/cards/' . $card->filename) }}"
+                                                alt="Card: {{ $card->name }}" class="w-full rounded-xl" />
+                                        </div>
+
+                                        <form method="dialog" class="modal-backdrop">
+                                            <button>close</button>
+                                        </form>
+                                    </dialog>
+                                @endif
+
                             </div>
                         @endforeach
                     </div>
