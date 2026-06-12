@@ -58,7 +58,7 @@
                             </div>
 
                             <dialog id="card_modal-{{ $card->id }}" class="modal">
-                                <div class="modal-box w-90 p-2 bg-transparent shadow-none">
+                                <div class="modal-box w-80 p-2 bg-transparent shadow-none">
                                     <img src="{{ asset('storage/images/cards/' . $card->filename) }}" alt="Card: {{ $card->name }}"
                                         class="w-full rounded-xl" />
                                 </div>

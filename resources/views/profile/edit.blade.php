@@ -1,5 +1,6 @@
 <x-layout title="profile edit">
-    <form action="/profile" method="POST" enctype="multipart/form-data" onsubmit="beforeSubmit(event, 'submit-profile-edit')">
+    <form action="/profile" method="POST" enctype="multipart/form-data"
+        onsubmit="beforeSubmit(event, 'submit-profile-edit')">
         @csrf
         @method('PATCH')
 
@@ -46,7 +47,9 @@
                 </div>
             </div>
 
-            <button type="submit" id="submit-profile-edit" class="btn btn-accent">Confirm change</button>
+            <button type="submit" id="submit-profile-edit" class="btn btn-accent disabled:bg-accent">
+                Confirm change
+            </button>
         </fieldset>
     </form>
 </x-layout>

@@ -13,21 +13,14 @@
 </head>
 
 <body data-theme="naruto" class="bg-base-100">
-    <div class="grid grid-cols-[1fr_auto_1fr]">
-        <div class="bg-neutral"></div>
+    <div class="max-w-xl  min-h-screen mx-auto bg-base-100 shadow-lg">
+        <x-nav></x-nav>
 
-        <div class="min-w-sm md:w-2xl min-h-screen mx-auto bg-base-100 shadow-lg">
-            <x-nav></x-nav>
-
-            <main class="p-5 ">
-                {{ $slot }}
-            </main>
-        </div>
-        
-        <div class="bg-neutral"></div>
+        <main class="p-5 ">
+            {{ $slot }}
+        </main>
     </div>
 </body>
-
 </html>
 
 {{-- pre-submit styling (general) --}}
