@@ -1,6 +1,7 @@
 *
 
 !images/
+!images/*
 !images/cards/
 !images/cards/**
 !images/rarities/
