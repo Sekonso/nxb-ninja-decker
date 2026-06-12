@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
                 'name' => $user[0],
                 'email' => $user[1],
                 'password' => Hash::make($user[2]),
-                'coins' => ($user[3] ?? null) ?: 200
+                'coins' => ($user[3] ?? null) ?: 300
             ]);
 
             array_push($createdUsers, $newUser);

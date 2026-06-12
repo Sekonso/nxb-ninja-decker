@@ -25,7 +25,7 @@
             @else
                 <div class="btn btn-accent btn-disabled flex items-center gap-2">
                     <span class="text-xl">
-                        No Free draw until
+                        Next free draw
                     </span>
 
                     <span class="countdown text-head text-2xl">
