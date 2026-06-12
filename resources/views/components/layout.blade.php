@@ -9,7 +9,7 @@
 
     <title>NxB Ninja Decker {{ $title ? "- $title" : ""}}</title>
 
-    @vite('resources/css/app.css', 'resources/js/app.js')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body data-theme="naruto" class="bg-base-100">
