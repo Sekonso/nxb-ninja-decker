@@ -2,14 +2,14 @@
     {{-- PROFILE --}}
     <div>
         {{-- <h2 class="text-4xl mb-4">Profile</h2> --}}
-        <div class="w-full p-6 flex flex-row gap-6 items-center justify-between bg-secondary text-secondary-content">
+        <div class="w-full p-6 flex flex-col sm:flex-row gap-6 items-center justify-between bg-secondary text-secondary-content">
             <div class="flex flex-row gap-6 items-center">
                 <img src="{{ asset('storage/images/avatars/' . $user->avatar_filename) }}" alt="profile picture"
                     class="h-16 w-16 object-cover object-center">
                 <span class="text-head text-4xl">{{ $user->name }}</span>
             </div>
 
-            <div class="flex flex-row flex-wrap gap-2 items-center justify-end w-30">
+            <div class="flex flex-row flex-wrap gap-2 items-center justify-end w-full sm:w-30">
                 <a href="/profile/edit" class="btn btn-accent text-head w-full">Edit profile</a>
                 <form action="/logout" method="post" class="w-full">
                     @csrf
