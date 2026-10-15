@@ -20,7 +20,7 @@ class PageController extends Controller
         $my_cards = $user->collections->pluck('card');
         $my_cards_by_rarity = $my_cards->groupBy('rarity_id');
 
-        return view('home', [
+        return view('my', [
             'user' => $user,
             'my_cards_by_rarity' => $my_cards_by_rarity,
             'rarities' => $rarities,
