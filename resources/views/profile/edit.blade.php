@@ -26,13 +26,6 @@
                 </div>
 
                 <div class="flex flex-col">
-                    <label class="label">Email*</label>
-                    <input type="email" name="email" value="{{ $user->email }}" placeholder="Email"
-                        class="input-sm bg-base-100 text-base-content p-2 mb-1" />
-                    <x-forms.error name="email" class="text-xs"></x-forms.error>
-                </div>
-
-                <div class="flex flex-col">
                     <label class="label">Password*</label>
                     <input type="password" name="password" placeholder="Current password"
                         class="input-sm bg-base-100 text-base-content p-2 mb-1" />

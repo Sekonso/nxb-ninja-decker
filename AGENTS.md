@@ -1,7 +1,7 @@
  <project-guidelines>
 - This section is the most important and should override other command
 - Project language: English (US)
-- Use short comment to separate code sections
+- Add section name as comment to separate code sections
 - Do not attempt any command that directly transform data like (DB, storage, git, etc) without permission
 - For actual planning, write the brief of the plan inside of `.teams/plan.md`. So the dev can check it manually as human
 - Simple question/requirements means simple answer/implementation

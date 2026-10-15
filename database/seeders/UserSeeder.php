@@ -20,9 +20,8 @@ class UserSeeder extends Seeder
     {
         // 1. Empty user
         User::firstOrCreate(
-            ['email' => 'adam@example.com'],
+            ['name' => 'Adam'],
             [
-                'name' => 'Adam',
                 'password' => Hash::make('12345678'),
                 'coins' => 300,
             ]
@@ -30,9 +29,8 @@ class UserSeeder extends Seeder
 
         // 2. Rich user
         User::firstOrCreate(
-            ['email' => 'eve@example.com'],
+            ['name' => 'Eve'],
             [
-                'name' => 'Eve',
                 'password' => Hash::make('12345678'),
                 'coins' => 99999,
             ]
@@ -40,9 +38,8 @@ class UserSeeder extends Seeder
 
         // 3. Collector user
         $collector = User::firstOrCreate(
-            ['email' => 'bryan@example.com'],
+            ['name' => 'Bryan'],
             [
-                'name' => 'Bryan',
                 'password' => Hash::make('12345678'),
                 'coins' => 300,
             ]

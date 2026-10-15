@@ -28,6 +28,16 @@ button:hover {
     cursor: pointer;
 }
 
+/* layout side accents */
+
+.layout-sides {
+    background: linear-gradient(
+        to right,
+        var(--color-primary) 0 50%,
+        var(--color-boruto) 50% 100%
+    );
+}
+
 /* animation */
 
 .premium-card {

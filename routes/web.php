@@ -15,8 +15,10 @@ Route::middleware('guest')->group(function () {
     Route::post('/login', [SessionController::class, 'store']);
 });
 
+Route::get('/', [PageController::class, 'index']);
+
 Route::middleware('auth')->group(function () {
-    Route::get('/', [PageController::class, 'home']);
+    Route::get('/my-page', [PageController::class, 'myPage']);
     Route::get('/codex', [PageController::class, 'codex']);
     Route::get('/guide', [PageController::class, 'guide']);
     Route::get('/about', [PageController::class, 'about']);

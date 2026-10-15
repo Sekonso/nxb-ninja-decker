@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Card;
 use App\Models\Rarity;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
+    public function index()
+    {
+        return view('index');
+    }
 
-    public function home()
+    public function myPage()
     {
         $user = Auth::user();
         $rarities = Rarity::get();
@@ -20,7 +23,7 @@ class PageController extends Controller
         return view('home', [
             'user' => $user,
             'my_cards_by_rarity' => $my_cards_by_rarity,
-            'rarities' => $rarities
+            'rarities' => $rarities,
         ]);
     }
 
@@ -30,7 +33,7 @@ class PageController extends Controller
         $rarities = Rarity::get();
         $all_cards = Card::get();
         $my_cards = $user->collections->pluck('card');
-        
+
         // filter ownership
         $all_cards->each(function ($card) use ($my_cards) {
             $card->owned = $my_cards->contains('id', $card->id);
@@ -44,11 +47,13 @@ class PageController extends Controller
         ]);
     }
 
-    public function guide() {
+    public function guide()
+    {
         return view('guide');
     }
 
-    public function about() {
+    public function about()
+    {
         return view('about');
     }
 }

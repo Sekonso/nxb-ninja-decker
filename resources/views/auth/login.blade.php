@@ -9,9 +9,9 @@
         <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
             {{-- <legend class="fieldset-legend">Login</legend> --}}
 
-            <label class="label">Email</label>
-            <input type="email" name="email" value="{{ old('email') }}" placeholder="Email" class="input" />
-            <x-forms.error name="email"></x-forms.error>
+            <label class="label">Username</label>
+            <input type="text" name="name" value="{{ old('name') }}" placeholder="Username" class="input" />
+            <x-forms.error name="name"></x-forms.error>
 
             <label class="label">Password</label>
             <input type="password" name="password" placeholder="Password" class="input" />

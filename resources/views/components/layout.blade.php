@@ -12,7 +12,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body data-theme="naruto" class="bg-base-100">
+<body data-theme="naruto" class="layout-sides">
     <div class="max-w-xl  min-h-screen mx-auto bg-base-100 shadow-lg">
         <x-nav></x-nav>
 

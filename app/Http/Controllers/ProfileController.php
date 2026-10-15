@@ -18,7 +18,7 @@ class ProfileController extends Controller
         $user = Auth::user();
 
         return view('profile.edit', [
-            'user' => $user
+            'user' => $user,
         ]);
     }
 
@@ -31,11 +31,9 @@ class ProfileController extends Controller
         // Valdations
         $request->validate([
             'avatar' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-            'name' => 'required|string|max:255',
-            'email' => [
+            'name' => [
                 'required',
                 'string',
-                'email',
                 'max:255',
                 Rule::unique('users')->ignore($user->id),
             ],
@@ -46,7 +44,7 @@ class ProfileController extends Controller
         // Storing new avatar file
         if ($request->hasFile('avatar')) {
             $avatar_file_new = $request->file('avatar');
-            $avatar_file_new_name = 'avatar_' . Str::uuid() . '.' . $avatar_file_new->extension();
+            $avatar_file_new_name = 'avatar_'.Str::uuid().'.'.$avatar_file_new->extension();
 
             $uploaded_avatar_path = $avatar_file_new->storeAs(
                 'images/avatars/',
@@ -55,9 +53,9 @@ class ProfileController extends Controller
             );
 
             // fail
-            if (!$uploaded_avatar_path) {
+            if (! $uploaded_avatar_path) {
                 return back()->withErrors([
-                    'avatar' => 'Error while storing the images'
+                    'avatar' => 'Error while storing the images',
                 ]);
             }
 
@@ -70,7 +68,6 @@ class ProfileController extends Controller
             DB::beginTransaction();
 
             $user->name = $request->name;
-            $user->email = $request->email;
 
             if ($request->filled('password_new')) {
                 $user->password = Hash::make($request->password_new);
@@ -87,7 +84,7 @@ class ProfileController extends Controller
             DB::rollBack();
 
             if ($is_file_uploaded) {
-                Storage::disk('public')->delete('images/avatars/' . $avatar_file_new_name);
+                Storage::disk('public')->delete('images/avatars/'.$avatar_file_new_name);
             }
 
             throw $e;

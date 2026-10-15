@@ -13,10 +13,6 @@
             <input type="text" name="name" value="{{ old('name') }}" placeholder="Username" class="input" />
             <x-forms.error name="name"></x-forms.error>
 
-            <label class="label">Email</label>
-            <input type="email" name="email" value="{{ old('email') }}" placeholder="Email" class="input" />
-            <x-forms.error name="email"></x-forms.error>
-
             <label class="label">Password</label>
             <input type="password" name="password" placeholder="Password" class="input" />
             <x-forms.error name="password"></x-forms.error>
