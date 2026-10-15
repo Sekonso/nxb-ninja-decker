@@ -37,14 +37,14 @@
             <div class="flex flex-row gap-6 my-12">
                 @if ($my_cards_by_rarity->has($rarity->id))
 
-                    <div class="grid grid-cols-3 gap-6">
+                    <div class="grid grid-cols-3 gap-6 w-full">
                         @foreach ($my_cards_by_rarity[$rarity->id] as $card)
                             <div class="hover-3d cursor-pointer"
                                 onclick="document.getElementById('card_modal-{{ $card->id }}').showModal()">
 
                                 <figure class="rounded-lg @if ($rarity->name == 'SR') premium-card @endif">
                                     <img src="{{ asset('storage/images/cards/' . $card->filename) }}"
-                                        alt="Card: {{ $card->name }}" />
+                                        alt="Card: {{ $card->name }}" loading="lazy" decoding="async" />
                                 </figure>
 
                                 <div></div>
@@ -60,7 +60,7 @@
                             <dialog id="card_modal-{{ $card->id }}" class="modal">
                                 <div class="modal-box w-80 p-2 bg-transparent shadow-none">
                                     <img src="{{ asset('storage/images/cards/' . $card->filename) }}" alt="Card: {{ $card->name }}"
-                                        class="w-full rounded-xl" />
+                                        class="w-full rounded-xl" loading="lazy" decoding="async" />
                                 </div>
 
                                 <form method="dialog" class="modal-backdrop">

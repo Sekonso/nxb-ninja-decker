@@ -12,7 +12,7 @@
 
         {{-- banner --}}
         <div>
-            <img src="{{ asset('storage/images/gacha_banner.png') }}" alt="gacha banner">
+            <img src="{{ asset('storage/images/gacha_banner.webp') }}" alt="gacha banner">
         </div>
 
         {{-- CTA's --}}

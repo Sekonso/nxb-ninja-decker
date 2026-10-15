@@ -17,20 +17,20 @@
             <div class="flex flex-row gap-6 my-12">
                 @if ($all_cards_by_rarity->has($rarity->id))
 
-                    <div class="grid grid-cols-3  gap-6">
+                    <div class="grid grid-cols-3 gap-6 w-full">
                         @foreach ($all_cards_by_rarity[$rarity->id] as $card)
                             <div class="hover-3d" onclick="document.getElementById('card_modal-{{ $card->id }}').showModal()">
 
                                 <!-- content -->
-                                <figure class="
-                                        @if (!$card->owned) 
-                                            grayscale brightness-10
-                                        @elseif ($rarity->name == 'SR') 
-                                            premium-card 
-                                        @endif 
-                                        rounded-lg">
-                                    <img src="{{ asset('storage/images/cards/' . $card->filename) }}"
-                                        alt="Card: {{ $card->name }}" />
+                                <figure
+                                    class="rounded-lg @if ($card->owned && $rarity->name == 'SR') premium-card @endif">
+                                    @if ($card->owned)
+                                        <img src="{{ asset('storage/images/cards/' . $card->filename) }}"
+                                            alt="Card: {{ $card->name }}" loading="lazy" decoding="async" />
+                                    @else
+                                        {{-- unowned: hide the card art, show a black placeholder --}}
+                                        <div class="w-full aspect-[751/1051] bg-black rounded-lg"></div>
+                                    @endif
                                 </figure>
 
                                 <!-- 8 empty divs needed for the 3D effect -->
@@ -51,7 +51,8 @@
                                     <dialog id="card_modal-{{ $card->id }}" class="modal">
                                         <div class="modal-box w-80 bg-transparent shadow-none">
                                             <img src="{{ asset('storage/images/cards/' . $card->filename) }}"
-                                                alt="Card: {{ $card->name }}" class="w-full rounded-xl" />
+                                                alt="Card: {{ $card->name }}" class="w-full rounded-xl"
+                                                loading="lazy" decoding="async" />
                                         </div>
 
                                         <form method="dialog" class="modal-backdrop">

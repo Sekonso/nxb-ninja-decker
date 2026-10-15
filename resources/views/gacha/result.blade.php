@@ -7,7 +7,8 @@
                 <div class="hover-3d">
                     <!-- content -->
                     <figure class="rounded-lg @if ($card->rarity->name == 'SR') premium-card @endif">
-                        <img src="{{ asset('storage/images/cards/' . $card->filename) }}" alt="Card: {{ $card->name }}" />
+                        <img src="{{ asset('storage/images/cards/' . $card->filename) }}" alt="Card: {{ $card->name }}"
+                            loading="lazy" decoding="async" />
                     </figure>
 
                     <!-- 8 empty divs needed for the 3D effect -->

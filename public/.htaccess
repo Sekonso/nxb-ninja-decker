@@ -1,3 +1,15 @@
+# Cache static assets (Vite hashed build output, fonts, favicon) for 1 year.
+# HTML pages go through index.php and are not affected.
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType text/css               "access plus 1 year"
+    ExpiresByType font/woff2             "access plus 1 year"
+    ExpiresByType font/woff              "access plus 1 year"
+    ExpiresByType image/*                "access plus 1 year"
+    ExpiresByType image/x-icon           "access plus 1 year"
+</IfModule>
+
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes
