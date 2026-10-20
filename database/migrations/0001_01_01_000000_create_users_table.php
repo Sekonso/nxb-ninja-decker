@@ -20,7 +20,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->unsignedInteger('coins')->default(400);
             $table->dateTime('latest_daily')->nullable();
-            $table->string('avatar_filename')->default('default.webp');
+            $table->string('avatar_filename')->default('default.jpg');
             $table->timestamps();
         });
 
